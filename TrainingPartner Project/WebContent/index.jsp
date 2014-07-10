@@ -28,7 +28,7 @@
           
        <form action="MainServlet" method="post">  
 			Name:<input type="text" name="username"/><br/><br/>  
-			Password:<input type="password" name="userpass"/><br/><br/>  
+			Password:<input type="password" name="password"/><br/><br/>  
 			<input type="submit" value="login"/>  
 	   </form>  
       <!--     <form class="form col-md-12 center-block" action="Main" method="post">
