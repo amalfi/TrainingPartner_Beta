@@ -40,7 +40,6 @@ public class MainServlet extends HttpServlet {
         // get request parameters for userID and password
 		DatabaseOperations.InsertData();
 		
-		
         String user = request.getParameter("username");
         String pwd = request.getParameter("password");
          

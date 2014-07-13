@@ -1,5 +1,6 @@
 package com.trainingpartner.models;
 
+
 public class User 
 {
 		private Integer userId;

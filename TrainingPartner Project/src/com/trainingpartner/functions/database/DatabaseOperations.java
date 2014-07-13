@@ -20,9 +20,12 @@ public class DatabaseOperations
 	        session.beginTransaction();
 	        User user = new User();
 	 
+	        user.setUserId(1);
 	        user.setLogin("admin");
 	        user.setPassword("haslo");
-	 
+	        user.setUserDescription("so");
+	        
+	        
 	        session.save(user);
 	        session.getTransaction().commit();
 	        
