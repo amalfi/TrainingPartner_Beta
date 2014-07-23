@@ -12,13 +12,13 @@
         </id>
         
         <property name="login" type="string">
-            <column name="login" length="10" not-null="true" unique="true" />
+            <column name="login" length="50" not-null="true" unique="true" />
         </property>
         <property name="password" type="string">
-            <column name="password" length="20" not-null="true" unique="true" />
+            <column name="password" length="50" not-null="true" unique="true" />
         </property>
    		<property name="userDescription" type="string">
-            <column name="userDescription" length="20" not-null="true" unique="true" />
+            <column name="userDescription" length="200" not-null="true" unique="true" />
         </property>
         
     </class>

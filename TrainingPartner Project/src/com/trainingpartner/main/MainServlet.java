@@ -38,7 +38,6 @@ public class MainServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
         // get request parameters for userID and password
-		DatabaseOperations.InsertData();
 		
         String user = request.getParameter("username");
         String pwd = request.getParameter("password");

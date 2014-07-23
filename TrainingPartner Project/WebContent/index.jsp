@@ -26,31 +26,38 @@
       </div>
       <div class="modal-body">
           
-       <form action="MainServlet" method="post">  
+       <!-- <form action="MainServlet" method="post">  
 			Name:<input type="text" name="username"/><br/><br/>  
 			Password:<input type="password" name="password"/><br/><br/>  
 			<input type="submit" value="login"/>  
-	   </form>  
-      <!--     <form class="form col-md-12 center-block" action="Main" method="post">
+	   </form>   -->
+      <form class="form col-md-12 center-block" action="MainServlet" method="post">
+      
 	            <div class="form-group">
-	              <input type="text" class="form-control input-lg" placeholder="Email">
+	              <input type="text" name="username" class="form-control input-lg" placeholder="Email">
 	            </div>
 	            
 	            <div class="form-group">
-	              <input type="password" class="form-control input-lg" placeholder="Password">
+	              <input type="password" name="password" class="form-control input-lg" placeholder="Password">
 	            </div>
 	            
 	            <div class="form-group">
-	              <button class="btn btn-primary btn-lg btn-block" >Sign In</button> button color : #3276B1
+	              <button class="btn btn-primary btn-lg btn-block" >Sign In</button> 
 	             
-	              <span class="pull-right"><a href="#">Register</a></span><span><a href="#">Need help?</a></span>
+	          
 	            </div>
-          </form> -->
+      </form>
+          <span class="pull-right">
+	            
+	           </span>
           
       </div>
+    
       <div class="modal-footer">
           <div class="col-md-12">
-          <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+               <button class="btn btn-primary btn-lg btn-block" onclick="document.location.href='register.jsp'" >Register</button> 
+                <br>  
+        		<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
 		  </div>	
       </div>
   </div>
