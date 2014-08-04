@@ -8,6 +8,7 @@ import org.hibernate.Session;
 
 import com.trainingpartner.hibernate.HibernateUtil;
 import com.trainingpartner.models.User;
+import com.trainingpartner.tools.Tools;
 
 public class DatabaseOperations 
 {
@@ -15,6 +16,7 @@ public class DatabaseOperations
 	
 	public static boolean SaveUser(String Username, String Password, String Description)
 	{
+		String sEncryptedPassword="";
 		boolean bRegistration=false;
 		log.debug("DatabaseOperations.InsertData");
 		try
@@ -29,9 +31,10 @@ public class DatabaseOperations
 	        	User user = new User();
 	   		 
 		        user.setLogin(Username);
-		        user.setPassword(Password);
-		        user.setUserDescription(Description);
 		        
+		        sEncryptedPassword=Tools.HashPassword(Password);
+		        user.setPassword(sEncryptedPassword);
+		        user.setUserDescription(Description);		        
 		        
 		        session.save(user);
 		        session.getTransaction().commit();
@@ -80,8 +83,29 @@ public class DatabaseOperations
 		session.disconnect();
 		return bUserExist;
 	}
-	public static void GetData()
+	public static boolean CheckLoginCreditentials(String sUsername, String sPassword)
 	{
-
+		boolean bCreditentialsAreOk=false;
+		
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		
+		Query query = session.createQuery("from User where login = :login and password = :password");
+		query.setParameter("login", sUsername );
+		query.setParameter("password", sPassword);
+		 //jezeli lista jest pusta nie ma Usera o takim loginie w bazie i mozna rejestrowac
+		List list = query.list();
+		if(list.size()!=0)
+		{
+			log.debug("Podano poprawne dane u¿ytkownika");
+			bCreditentialsAreOk=true;
+		}
+		
+		if(bCreditentialsAreOk==false)
+		{
+			log.debug("Podano z³e dane u¿ytkownika");
+		}
+		session.disconnect();
+		
+		return bCreditentialsAreOk;
 	}
 }

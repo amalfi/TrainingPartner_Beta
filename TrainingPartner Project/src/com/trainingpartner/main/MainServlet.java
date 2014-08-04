@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import com.trainingpartner.dao.LoginDao;
 import com.trainingpartner.functions.database.DatabaseOperations;
+import com.trainingpartner.tools.Tools;
 
 /**
  * Servlet implementation class MainServlet
@@ -22,8 +23,6 @@ import com.trainingpartner.functions.database.DatabaseOperations;
 @WebServlet(description = "Main servlet in project", urlPatterns = { "/MainServlet" })
 public class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	  private final String userID = "Pankaj";
-	    private final String password = "journaldev";
 	    	static Logger log = Logger.getLogger("com.trainingpartner.main.MainServlet");
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -41,11 +40,13 @@ public class MainServlet extends HttpServlet {
 		
         String user = request.getParameter("username");
         String pwd = request.getParameter("password");
-         
-        if(userID.equals(user) && password.equals(pwd))
+        String hpwd = Tools.HashPassword(pwd);
+        boolean bUserExist = DatabaseOperations.CheckLoginCreditentials(user, hpwd);
+        //Here we would check, if user and password from input equals some of the users from database 
+        if(bUserExist)
         {
             HttpSession session = request.getSession();
-            session.setAttribute("user", "Pankaj");
+            session.setAttribute("user", user);
             //setting session to expiry in 30 mins
             session.setMaxInactiveInterval(30*60);
             Cookie userName = new Cookie("user", user);
