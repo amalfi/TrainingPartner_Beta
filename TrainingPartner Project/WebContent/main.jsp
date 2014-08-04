@@ -12,7 +12,7 @@
 String user = null;
 if(session.getAttribute("user") == null)
 {
-    response.sendRedirect("loginError.html");
+    response.sendRedirect("/loginError.jsp");
 }
 else user = (String) session.getAttribute("user");
 String userName = null;
@@ -22,8 +22,16 @@ if(cookies !=null)
 {
 	for(Cookie cookie : cookies)
 	{
-	    if(cookie.getName().equals("user")) userName = cookie.getValue();
-	    if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
+	    if(cookie.getName().equals("user")) 
+	    	{
+	    	 userName = cookie.getValue();
+	    	 System.out.println(userName);
+	    	}
+	    if(cookie.getName().equals("JSESSIONID")) 
+	    	{
+	    	sessionID = cookie.getValue();
+	    	System.out.println(sessionID);
+	    	}
 	}
 }
 %>

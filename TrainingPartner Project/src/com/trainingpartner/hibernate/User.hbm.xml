@@ -6,9 +6,10 @@
  
 <hibernate-mapping>
     <class name="com.trainingpartner.models.User" table="users" catalog="public">
+       
         <id name="userId" type="java.lang.Integer">
             <column name="userId" />
-            <generator class="identity" />
+            <generator class="native" />
         </id>
         
         <property name="login" type="string">

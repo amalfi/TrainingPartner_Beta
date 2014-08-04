@@ -13,8 +13,9 @@ public class DatabaseOperations
 {
 	static Logger log = Logger.getLogger("com.trainingpartner.functions.database.DatabaseOperations");
 	
-	public static void SaveUser(String Username, String Password, String Description)
+	public static boolean SaveUser(String Username, String Password, String Description)
 	{
+		boolean bRegistration=false;
 		log.debug("DatabaseOperations.InsertData");
 		try
 		{
@@ -22,25 +23,36 @@ public class DatabaseOperations
 		 
 	        session.beginTransaction();
 	        boolean bUserAlreadyExist = CheckIfUserAlreadyExistInDB(Username);
-	        
-	        User user = new User();
-	 
-	        user.setLogin(Username);
-	        user.setPassword(Password);
-	        user.setUserDescription(Description);
-	        
-	        
-	        session.save(user);
-	        session.getTransaction().commit();
-	        
-	        session.disconnect();
-		}
+	        if(bUserAlreadyExist==false)
+	        {
+	        	log.debug("Uzytkownik o takim loginie nie istnieje jeszcze w systemie, zostanie utworzony");
+	        	User user = new User();
+	   		 
+		        user.setLogin(Username);
+		        user.setPassword(Password);
+		        user.setUserDescription(Description);
+		        
+		        
+		        session.save(user);
+		        session.getTransaction().commit();
+		        
+		        session.disconnect();	
+		        bRegistration=true;
+	        }
+	        else
+	        {
+	        	log.debug("Uzytkownik o takim loginie istnieje juz w systemie, rejestracja zwroci blad");
+	        	bRegistration=false;
+	        }
+
+	   }
 	   catch(Exception e)
 	   {
 		   log.debug(e.getMessage());
 		   e.printStackTrace();
 	   }
-	}
+		return bRegistration;
+}
 	
 	public static boolean CheckIfUserAlreadyExistInDB(String Username)
 	{
