@@ -43,8 +43,6 @@
 	            
 	            <div class="form-group">
 	              <button class="btn btn-primary btn-lg btn-block" >Sign In</button> 
-	             
-	          
 	            </div>
       </form>
           <span class="pull-right">
