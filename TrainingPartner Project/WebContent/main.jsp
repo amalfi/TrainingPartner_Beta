@@ -68,12 +68,10 @@ if(cookies !=null)
 	    if(cookie.getName().equals("user")) 
 	    	{
 	    	 userName = cookie.getValue();
-	    	 System.out.println(userName);
 	    	}
 	    if(cookie.getName().equals("JSESSIONID")) 
 	    	{
 	    	sessionID = cookie.getValue();
-	    	System.out.println(sessionID);
 	    	}
 	}
 }
@@ -116,53 +114,71 @@ User=<%=user %> --%>
 		</nav>
          <!-- Contents of Navigation Panel -->
      	 
-        <div id="home" class="content">
-			<div class="container">
-			<jsp:useBean id="obj" class="com.trainingpartner.lists.AllDiaries" scope="page"/>
-			<select class="form-control" placeholder=".input-medium" height>
-			    <c:forEach var="item" items="${obj.items}">
-			     <option>${item}</option>
-			    </c:forEach>
-			</select>
-				<!-- <table class="table table-bordered">
-				        <thead>
-				          <tr>
-				            <th></th>
-				            <th>Diary Data</th>
-				          </tr>
-				        </thead>
-				        <tbody>
-				          <tr>
-				            First Column
-				            <td rowspan="2">
-				            	   Default buttons with dropdown menu
-						        <div class="btn-group">
-						            <button data-toggle="dropdown" class="btn btn-default dropdown-toggle">Select existing diary<span class="caret"></span></button>
-						            <ul class="dropdown-menu">
-						                <li class="divider"></li>
-						                <li><a href="#">Separated link</a></li>
-						            </ul>
-						        </div>
-				            </td>
-				            End of first column
-				            <td>Mark</td>
-				          </tr>
-   
-				        </tbody>
-			      </table> -->
-			</div>
-		</div>
-		<div id="one" class="content">
-					    Content 2.
-		</div> 
-		<div id="two" class="content">
-					    Content 3.
-		</div> 
-		<div id="three" class="content">
-					    Content 4.
-		</div> 
+       		 <div id="home" class="content">
+			  <div class="panel-group" id="accordion">
+				  <div class="panel panel-default">
+				    <div class="panel-heading">
+				      <h4 class="panel-title">
+				        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+				          Create new diary
+				        </a><i class="indicator glyphicon glyphicon-chevron-up  pull-right"></i>
+				      </h4>
+				    </div>
+				    <div id="collapseTwo" class="panel-collapse collapse">
+				      <div class="panel-body">
+				    
+				    			  <form class="form col-md-12 center-block" action="Registration" method="post">
+						            <div class="form-group">
+						            Login
+						              <input type="text" name="username" class="form-control input-lg" placeholder="Email">
+						            </div>
+						            
+						            <div class="form-group">
+						            Password
+						              <input type="password" name="password" class="form-control input-lg" placeholder="Password">
+						            </div>
+						           
+						            <div class="form-group">
+						            Description
+						              <input type="text" name="description" class="form-control input-lg" placeholder="Description">
+						            </div>
+						            
+						            <div class="form-group">
+						              <button class="btn btn-primary btn-lg btn-block" >Register</button> 
+						             </div>
+					     		 </form>
 
-	
+				      </div>
+				    </div>
+				  </div>
+				  <div class="panel panel-default">
+				    <div class="panel-heading">
+				      <h4 class="panel-title">
+				        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+				          Edit existing diary content
+				        </a><i class="indicator glyphicon glyphicon-chevron-up pull-right"></i>
+				      </h4>
+				    </div>
+				    <div id="collapseThree" class="panel-collapse collapse">
+				      <div class="panel-body">
+				        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+				      </div>
+				    </div>
+				  </div>
+				</div> 
+			</div>
+			
+			<div id="one" class="content">
+						    Content 2.
+			</div> 
+			<div id="two" class="content">
+						    Content 3.
+			</div> 
+			<div id="three" class="content">
+						    Content 4.
+			</div> 
+			
+		
 		<!-- End of ontents of Navigation Panel -->
         </div> 
         <!-- End of main Panel -->
