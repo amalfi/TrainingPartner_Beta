@@ -2,6 +2,10 @@ package com.trainingpartner.tools;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 
@@ -12,6 +16,20 @@ public class Tools
 {
 
 	static Logger log = Logger.getLogger("com.trainingpartner.tools.Tools");
+	public static HashMap<String,String> GetDataFromRequest(HttpServletRequest request, ArrayList<String> alRequestParametersList)
+	{
+		HashMap<String,String> hmRequestData = new HashMap<String,String>();
+		log.info("Getting data from request....");
+		for(String sCurrentElement : alRequestParametersList)
+		{
+			hmRequestData.put(sCurrentElement, request.getParameter(sCurrentElement));
+			
+		}
+	
+		return hmRequestData;
+		
+	}
+	
 	
 	public static String HashPassword(String passwordToHash)
 	{

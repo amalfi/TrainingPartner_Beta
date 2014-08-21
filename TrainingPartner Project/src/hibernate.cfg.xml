@@ -33,6 +33,8 @@
 
         <mapping resource="com/trainingpartner/hibernate/User.hbm.xml"/>
 		<mapping class="com.trainingpartner.models.User"/>
+		<mapping class="com.trainingpartner.models.TrainingDiary"/>
+		
 		
     </session-factory>
 

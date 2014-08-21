@@ -12,31 +12,8 @@
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.js"></script>
+<script type="text/javascript" src="js/TrainingPartnerScripts.js"></script>
 
-<script type="text/javascript">
-
-$(document).ready(function()
-	{
-
-    $('#menu a').each(function()
-    {
-        id = $(this).attr('href');
-        id = id.substring(id.lastIndexOf('/'));
-        id = id.substring(0,id.indexOf('.'));
-        $(this).attr('rel',id);
-    });
-    $('#home').show();
-    $('#menu a').click( function(e)
-    {
-        e.preventDefault();
-        $('.content').hide();
-        $('#'+$(this).attr('rel')).show();
-        location.hash = '#!/'+$(this).attr('rel');
-        return false;
-    });
-});
-
-</script>
 <style type="text/css">
     .bs-example
     {
@@ -78,7 +55,7 @@ if(cookies !=null)
 %>
 
 <%-- <h3>Hi, Login successful. Your Session ID=<%=sessionID %></h3> --%>
-<h3>Hello  <%=userName %>. Welcome to Training Partner System</h3>
+<h3 id="name_header">Hello <%=userName %></h3>
 <%-- <br>
 User=<%=user %> --%>
 <br>
@@ -126,28 +103,36 @@ User=<%=user %> --%>
 				    </div>
 				    <div id="collapseTwo" class="panel-collapse collapse">
 				      <div class="panel-body">
-				    
-				    			  <form class="form col-md-12 center-block" action="Registration" method="post">
+				   <!-- Begin of 'Save new diary' form -->
+				    			  <form class="form col-md-12 center-block" action="SaveDiary" method="post">
+						            
+							            <div class="form-group">
+							            Diary Name
+							              <input type="text" name="diaryName" class="form-control input-lg" placeholder="Diary Name">
+							            </div>
+							            
+							            <div class="form-group">
+							            Diary Creation Date (RRRR-MM-DD)
+							              <input type="text" name="diaryCreationDate" class="form-control input-lg" id="date" placeholder="Diary Creation Date (RRRR-MM-DD)">
+							            </div>
+							               
+							            <div class="form-group">
+							            Diary Description
+							              <input type="text" name="diaryDescription" class="form-control input-lg" placeholder="Diary Description">
+							            </div>
+							            
+							            <div class="form-group">
+							            Diary Author
+							              <input type="text" name="diaryCreator" class="form-control input-lg" id="author" placeholder="Diary Author">
+							            </div>
+							  
 						            <div class="form-group">
-						            Login
-						              <input type="text" name="username" class="form-control input-lg" placeholder="Email">
+						              <button class="btn btn-primary btn-lg btn-block" >Save new training diary</button> 
 						            </div>
 						            
-						            <div class="form-group">
-						            Password
-						              <input type="password" name="password" class="form-control input-lg" placeholder="Password">
-						            </div>
-						           
-						            <div class="form-group">
-						            Description
-						              <input type="text" name="description" class="form-control input-lg" placeholder="Description">
-						            </div>
-						            
-						            <div class="form-group">
-						              <button class="btn btn-primary btn-lg btn-block" >Register</button> 
-						             </div>
 					     		 </form>
-
+				 <!-- End of 'Save new diary' form -->
+				  
 				      </div>
 				    </div>
 				  </div>
@@ -166,6 +151,7 @@ User=<%=user %> --%>
 				    </div>
 				  </div>
 				</div> 
+				All diaries table
 			</div>
 			
 			<div id="one" class="content">

@@ -40,6 +40,7 @@ public class Registration extends HttpServlet {
 	        if(bRegistrationSucceed==false)
 	        {
 	        	response.sendRedirect("/TrainingPartnerProject/registerError.jsp");
+	        	
 	        }
 	        else
 	        {
