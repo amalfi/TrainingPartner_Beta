@@ -74,7 +74,7 @@ User=<%=user %> --%>
 				  			 <a href="home.html">Training Diaries</a>
 				  		 </li>
 				        <li>
-				       		 <a href="one.html">Training Programs</a>
+				       		 <a href="one.html">Training Schedules</a>
 				        </li>
 				         <li>
 				       		 <a href="two.html">Trainings</a>

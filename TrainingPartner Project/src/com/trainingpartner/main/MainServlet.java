@@ -13,7 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.trainingpartner.dao.LoginDao;
+import com.trainingpartner.controllers.TrainingDiaryController;
+import com.trainingpartner.controllers.UserController;
 import com.trainingpartner.functions.database.DatabaseOperations;
 import com.trainingpartner.tools.Tools;
 
@@ -41,7 +42,7 @@ public class MainServlet extends HttpServlet {
         String user = request.getParameter("username");
         String pwd = request.getParameter("password");
         String hpwd = Tools.HashPassword(pwd);
-        boolean bUserExist = DatabaseOperations.CheckLoginCreditentials(user, hpwd);
+        boolean bUserExist = UserController.CheckLoginCreditentials(user, hpwd);
         //Here we would check, if user and password from input equals some of the users from database 
         if(bUserExist)
         {

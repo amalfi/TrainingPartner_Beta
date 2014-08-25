@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.trainingpartner.controllers.UserController;
 import com.trainingpartner.functions.database.DatabaseOperations;
 
 /**
@@ -29,18 +30,16 @@ public class Registration extends HttpServlet {
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-	       
 		try
 		{
 	    String sUsername = request.getParameter("username");
         String sPassword = request.getParameter("password");
         String sDescription = request.getParameter("description");
         
-        boolean bRegistrationSucceed=DatabaseOperations.SaveUser(sUsername, sPassword, sDescription);
+        boolean bRegistrationSucceed=UserController.SaveUser(sUsername, sPassword, sDescription);
 	        if(bRegistrationSucceed==false)
 	        {
 	        	response.sendRedirect("/TrainingPartnerProject/registerError.jsp");
-	        	
 	        }
 	        else
 	        {
